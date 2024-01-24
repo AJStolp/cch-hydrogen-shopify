@@ -8,7 +8,7 @@ import type {
 } from 'storefrontapi.generated';
 
 export const meta: MetaFunction = () => {
-  return [{title: 'CCH'}];
+  return [{title: 'Coffee Cup Hut'}];
 };
 
 export async function loader({context}: LoaderFunctionArgs) {
@@ -38,17 +38,20 @@ function FeaturedCollection({
   if (!collection) return null;
   const image = collection?.image;
   return (
-    <Link
-      className="featured-collection"
-      to={`/collections/${collection.handle}`}
-    >
-      {image && (
-        <div className="featured-collection-image">
-          <Image data={image} sizes="100vw" />
-        </div>
-      )}
-      <h1>{collection.title}</h1>
-    </Link>
+    <>
+      <h1>Trending Collections</h1>
+      <Link
+        className="featured-collection"
+        to={`/collections/${collection.handle}`}
+      >
+        {image && (
+          <div className="featured-collection-image">
+            <Image data={image} sizes="100vw" />
+          </div>
+        )}
+        <h2>{collection.title}</h2>
+      </Link>
+    </>
   );
 }
 

@@ -22,6 +22,7 @@ import cchfavicon from '../public/favicon.png';
 import resetStyles from './styles/reset.css';
 import appStyles from './styles/app.css';
 import {Layout} from '~/components/Layout';
+import './styles/custom-fonts.css';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -116,10 +117,11 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-background text-text">
         <Layout {...data}>
           <Outlet />
         </Layout>

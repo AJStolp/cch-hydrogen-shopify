@@ -31,7 +31,7 @@ export default function Hero() {
         </div>
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
           <img
-            src="/assets/cup-no-bg-2x.png"
+            src="/assets/cup-no-bg-2x-shrunk.png"
             alt=""
             className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
           />

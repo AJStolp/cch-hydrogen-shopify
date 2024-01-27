@@ -6,6 +6,7 @@ import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
+import Hero from '~/components/Hero';
 
 export const meta: MetaFunction = () => {
   return [{title: 'Coffee Cup Hut'}];
@@ -24,6 +25,7 @@ export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
     <div className="home">
+      <Hero />
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>
@@ -62,7 +64,7 @@ function RecommendedProducts({
 }) {
   return (
     <div className="recommended-products">
-      <h2>Recommended Products</h2>
+      <h2>Coffee Connoisseur's Picks</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
@@ -79,10 +81,10 @@ function RecommendedProducts({
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
                   <section className="bg-primary rounded p-2">
-                    <h4>{product.title}</h4>
-                    <p>
+                    <h4 className="text">{product.title}</h4>
+                    <small className="text-sm">
                       <Money data={product.priceRange.minVariantPrice} />
-                    </p>
+                    </small>
                   </section>
                 </Link>
               ))}

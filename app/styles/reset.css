@@ -126,3 +126,8 @@ code {
   font-family: monospace;
   padding: 0.25rem;
 }
+
+@font-face {
+  font-family: Yanone Kaffeesatz;
+  src: url(../../public/fonts/YanoneKaffeesatz-Regular.ttf);
+}

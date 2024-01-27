@@ -6,9 +6,10 @@ import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
+import Hero from '~/components/Hero';
 
 export const meta: MetaFunction = () => {
-  return [{title: 'CCH'}];
+  return [{title: 'Coffee Cup Hut'}];
 };
 
 export async function loader({context}: LoaderFunctionArgs) {
@@ -24,6 +25,7 @@ export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
     <div className="home">
+      <Hero />
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>
@@ -38,17 +40,20 @@ function FeaturedCollection({
   if (!collection) return null;
   const image = collection?.image;
   return (
-    <Link
-      className="featured-collection"
-      to={`/collections/${collection.handle}`}
-    >
-      {image && (
-        <div className="featured-collection-image">
-          <Image data={image} sizes="100vw" />
-        </div>
-      )}
-      <h1>{collection.title}</h1>
-    </Link>
+    <>
+      <h1>Trending Collections</h1>
+      <Link
+        className="featured-collection"
+        to={`/collections/${collection.handle}`}
+      >
+        {image && (
+          <div className="featured-collection-image">
+            <Image data={image} sizes="100vw" />
+          </div>
+        )}
+        <h2>{collection.title}</h2>
+      </Link>
+    </>
   );
 }
 
@@ -59,15 +64,15 @@ function RecommendedProducts({
 }) {
   return (
     <div className="recommended-products">
-      <h2>Recommended Products</h2>
+      <h2>Coffee Connoisseur's Picks</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products-grid">
+            <div className="recommended-products-grid w-fit">
               {products.nodes.map((product) => (
                 <Link
                   key={product.id}
-                  className="recommended-product"
+                  className="recommended-product rounded-lg"
                   to={`/products/${product.handle}`}
                 >
                   <Image
@@ -75,10 +80,12 @@ function RecommendedProducts({
                     aspectRatio="1/1"
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
-                  <h4>{product.title}</h4>
-                  <small>
-                    <Money data={product.priceRange.minVariantPrice} />
-                  </small>
+                  <section className="bg-primary rounded p-2">
+                    <h4 className="text">{product.title}</h4>
+                    <small className="text-sm">
+                      <Money data={product.priceRange.minVariantPrice} />
+                    </small>
+                  </section>
                 </Link>
               ))}
             </div>

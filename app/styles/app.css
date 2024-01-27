@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --aside-width: 400px;
   --cart-aside-summary-height-with-discount: 300px;
@@ -129,7 +133,6 @@ aside li {
 */
 .header {
   align-items: center;
-  background: #fff;
   display: flex;
   height: var(--header-height);
   padding: 0 1rem;
@@ -177,7 +180,7 @@ aside li {
 * --------------------------------------------------
 */
 .footer {
-  background: var(--color-dark);
+  /* background: var(--color-dark); */
   margin-top: auto;
 }
 

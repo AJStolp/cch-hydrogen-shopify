@@ -18,7 +18,7 @@ import {
   type ShouldRevalidateFunction,
 } from '@remix-run/react';
 import type {CustomerAccessToken} from '@shopify/hydrogen/storefront-api-types';
-import favicon from '../public/favicon.svg';
+import cchfavicon from '../public/favicon.png';
 import resetStyles from './styles/reset.css';
 import appStyles from './styles/app.css';
 import {Layout} from '~/components/Layout';
@@ -56,7 +56,7 @@ export function links() {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {rel: 'icon', type: 'image/svg+xml', href: cchfavicon},
   ];
 }
 
@@ -119,7 +119,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-background text-text">
         <Layout {...data}>
           <Outlet />
         </Layout>

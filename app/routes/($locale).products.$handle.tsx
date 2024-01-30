@@ -190,6 +190,7 @@ function ProductMain({
       <br />
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
       <br />
+      <Link to="/collections">Continue shopping →</Link>
     </div>
   );
 }

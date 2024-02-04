@@ -1,11 +1,11 @@
 export default function Hero() {
   return (
-    <section className="bg-secondary">
+    <section className="bg-sSecondary">
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
           <h1 className="text-3xl md:text-5xl font-bold">
             Find Your Perfect{' '}
-            <span className="text-sText">Coffee Companion</span>
+            <span className="text-accent">Coffee Companion</span>
           </h1>
           <p className="mt-6 mb-8 text-lg sm:mb-12">
             Dive into our exclusive selection of coffee cups, each crafted to
@@ -19,14 +19,14 @@ export default function Hero() {
               href="#"
               className="px-8 py-3 text-lg font-semibold rounded bg-primary"
             >
-              Suspendisse
+              Shop
             </a>
             <a
               rel="noopener noreferrer"
               href="#"
               className="px-8 py-3 text-lg font-semibold rounded bg-accent text-white"
             >
-              Malesuada
+              About
             </a>
           </div>
         </div>

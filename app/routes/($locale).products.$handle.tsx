@@ -190,7 +190,9 @@ function ProductMain({
       <br />
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
       <br />
-      <Link to="/collections">Continue shopping →</Link>
+      <Link to="/collections" className="bg-secondary rounded py-2 px-4">
+        Continue shopping →
+      </Link>
     </div>
   );
 }
@@ -316,6 +318,7 @@ function AddToCartButton({
             type="submit"
             onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
+            className="bg-primary rounded py-2 px-4"
           >
             {children}
           </button>

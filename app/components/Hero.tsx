@@ -3,14 +3,15 @@ export default function Hero() {
     <section className="bg-secondary">
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-          <h1 className="text-3xl md:text-5xl font-bold leadi">
-            Ac mattis
-            <span className="dark:text-violet-400">senectus</span>erat pharetra
+          <h1 className="text-3xl md:text-5xl font-bold">
+            Find Your Perfect{' '}
+            <span className="text-sText">Coffee Companion</span>
           </h1>
           <p className="mt-6 mb-8 text-lg sm:mb-12">
-            Dictum aliquam porta in condimentum ac integer
-            <br className="hidden md:inline lg:hidden" />
-            turpis pulvinar, est scelerisque ligula sem
+            Dive into our exclusive selection of coffee cups, each crafted to
+            perfect your daily coffee ritual. Whether you're seeking
+            sophistication or practical innovation, your next favorite coffee
+            companion awaits.
           </p>
           <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
             <a

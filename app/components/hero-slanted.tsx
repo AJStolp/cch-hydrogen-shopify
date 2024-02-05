@@ -12,7 +12,7 @@ export default function HeroSlanted() {
         </svg>
         <img
           className="object-cover w-full h-56 rounded h-full"
-          src={'/assets/try-hero.png'}
+          src={'/assets/try-hero-3.png'}
           alt={''}
         />
       </div>

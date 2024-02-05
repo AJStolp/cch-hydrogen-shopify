@@ -69,9 +69,10 @@ function CollectionItem({
       {collection?.image && (
         <Image
           alt={collection.image.altText || collection.title}
-          aspectRatio="1/1"
+          // aspectRatio="1/1"
           data={collection.image}
           loading={index < 3 ? 'eager' : undefined}
+          className="max-w-fit"
         />
       )}
       <h5>{collection.title}</h5>

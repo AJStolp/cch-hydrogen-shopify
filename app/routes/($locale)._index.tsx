@@ -7,6 +7,7 @@ import type {
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
 import Hero from '~/components/Hero';
+import HeroSlanted from '~/components/hero-slanted';
 
 export const meta: MetaFunction = () => {
   return [{title: 'Coffee Cup Hut'}];
@@ -25,7 +26,8 @@ export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
     <div className="home">
-      <Hero />
+      <HeroSlanted />
+      {/* <Hero /> */}
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>

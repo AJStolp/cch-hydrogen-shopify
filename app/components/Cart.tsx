@@ -256,6 +256,7 @@ export function CartEmpty({
             window.location.href = '/collections';
           }
         }}
+        className="bg-secondary rounded py-2 px-4"
       >
         Continue shopping →
       </Link>

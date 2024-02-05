@@ -43,7 +43,7 @@ function FeaturedCollection({
   const image = collection?.image;
   return (
     <>
-      <h1>Trending Collections</h1>
+      <h2 className="text-xl">Signature sips</h2>
       <Link
         className="featured-collection"
         to={`/collections/${collection.handle}`}
@@ -66,7 +66,7 @@ function RecommendedProducts({
 }) {
   return (
     <div className="recommended-products">
-      <h2>Coffee Connoisseur's Picks</h2>
+      <h2 className="text-xl">Coffee Connoisseur's Picks</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
@@ -82,7 +82,7 @@ function RecommendedProducts({
                     aspectRatio="1/1"
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
-                  <section className="bg-primary rounded p-2">
+                  <section className="bg-accent text-white rounded p-2">
                     <h4 className="text">{product.title}</h4>
                     <small className="text-sm">
                       <Money data={product.priceRange.minVariantPrice} />

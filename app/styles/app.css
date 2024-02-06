@@ -476,3 +476,7 @@ aside li {
 .account-logout {
   display: inline-block;
 }
+
+.webkit {
+  height: -webkit-fill-available;
+}

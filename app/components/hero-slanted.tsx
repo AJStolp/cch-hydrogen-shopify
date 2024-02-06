@@ -27,7 +27,7 @@ export default function HeroSlanted() {
             sophistication or practical innovation, your next favorite coffee
             companion awaits.
           </p>
-          <div className="flex items-center">
+          <div className="flex items-center pt-4">
             <a
               href="/"
               className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"

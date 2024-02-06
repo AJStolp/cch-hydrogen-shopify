@@ -12,12 +12,12 @@ export default function HeroSlanted() {
         </svg>
         <img
           className="object-cover w-full h-56 rounded h-full"
-          src={'/assets/try-hero-3.png'}
+          src={'/assets/coffee-collage.webp'}
           alt={''}
         />
       </div>
       <div className="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl py-10">
-        <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
+        <div className="mb-16 lg:my-40 lg:max-w-[29rem] lg:pr-5">
           <h1 className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-6xl">
             Find Your Perfect Coffee Companion
           </h1>

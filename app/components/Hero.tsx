@@ -9,9 +9,9 @@ export default function Hero() {
           </h1>
           <p className="mt-6 mb-8 text-lg sm:mb-12">
             Dive into our exclusive selection of coffee cups, each crafted to
-            perfect your daily coffee ritual. Whether you're seeking
-            sophistication or practical innovation, your next favorite coffee
-            companion awaits.
+            perfect your daily coffee ritual. Whether you're craving a touch of
+            elegance or a splash of playful innovation, your next favorite
+            coffee companion awaits.
           </p>
           <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
             <a

@@ -484,3 +484,18 @@ aside li {
 .webkit {
   height: -webkit-fill-available;
 }
+
+.cms-page > p {
+  padding-bottom: 8px;
+}
+
+.cms-page > a {
+  text-decoration: underline;
+  transition: all 0.3s ease-in-out;
+}
+
+.cms-page > a:hover {
+  transform: scale(1.1);
+  display: inline-flex;
+  padding-left: 6px;
+}

@@ -133,11 +133,13 @@ function RecommendedProducts({
                       sizes="(min-width: 45em) 20vw, 50vw"
                     />
                   </Link>
-                  <section className="bg-accent text-white rounded p-2">
-                    <h4 className="text">{product.title}</h4>
-                    <small className="text-sm">
-                      <Money data={product.priceRange.minVariantPrice} />
-                    </small>
+                  <section className="bg-accent text-white rounded p-2 flex flex-col lg:flex-row lg:justify-between">
+                    <div className="pb-2">
+                      <h4 className="text">{product.title}</h4>
+                      <small className="text-sm">
+                        <Money data={product.priceRange.minVariantPrice} />
+                      </small>
+                    </div>
                     <AddToCartButton
                       variantId={product.variants.nodes[0].id} // Pass the variant ID
                     >

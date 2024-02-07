@@ -97,7 +97,7 @@ export function SearchForm({searchTerm}: {searchTerm: string}) {
         type="search"
       />
       &nbsp;
-      <button type="submit">Search</button>
+      <button type="submit">Find Yours</button>
     </Form>
   );
 }

@@ -12,9 +12,7 @@ import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
-import Hero from '~/components/Hero';
 import HeroSlanted from '~/components/hero-slanted';
-import {CartLineInput} from '@shopify/hydrogen/storefront-api-types';
 
 export const meta: MetaFunction = () => {
   return [{title: 'Coffee Cup Hut'}];

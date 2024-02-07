@@ -326,6 +326,10 @@ aside li {
   object-fit: cover;
 }
 
+.recommended-product:hover {
+  text-decoration-color: white;
+}
+
 .recommended-products-grid {
   display: grid;
   grid-gap: 1.5rem;
@@ -475,4 +479,8 @@ aside li {
 
 .account-logout {
   display: inline-block;
+}
+
+.webkit {
+  height: -webkit-fill-available;
 }

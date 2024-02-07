@@ -35,7 +35,7 @@ export function Layout({
       <SearchAside />
       <MobileMenuAside menu={header?.menu} shop={header?.shop} />
       {header && <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />}
-      <main className="max-w-screen-xl m-auto p-4 md:p-0">{children}</main>
+      <main className=" md:max-w-screen-xl md:m-auto md:p-4">{children}</main>
       <Suspense>
         <Await resolve={footer}>
           {(footer) => <Footer menu={footer?.menu} shop={header?.shop} />}

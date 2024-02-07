@@ -42,7 +42,7 @@ function FeaturedCollection({
   if (!collection) return null;
   const image = collection?.image;
   return (
-    <>
+    <section className="py-12">
       <h2 className="text-xl">Signature sips</h2>
       <Link
         className="featured-collection"
@@ -55,7 +55,7 @@ function FeaturedCollection({
         )}
         <h2>{collection.title}</h2>
       </Link>
-    </>
+    </section>
   );
 }
 

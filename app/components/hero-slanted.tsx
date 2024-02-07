@@ -29,13 +29,13 @@ export default function HeroSlanted() {
           </p>
           <div className="flex items-center pt-4">
             <a
-              href="/"
+              href="/collections"
               className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
             >
               Shop
             </a>
             <a
-              href="/"
+              href="/pages/about"
               aria-label=""
               className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none bg-secondary"
             >

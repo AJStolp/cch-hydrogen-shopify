@@ -484,3 +484,7 @@ aside li {
 .webkit {
   height: -webkit-fill-available;
 }
+
+.cms-page > p {
+  padding-bottom: 8px;
+}

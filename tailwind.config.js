@@ -13,7 +13,7 @@ export default {
         primary: '#f2ebd4',
         secondary: '#DFD7BF',
         accent: '#5d4123',
-        sAccent: '#065001',
+        sAccent: '#edeceb',
         sText: '#dfd7bf',
         sSecondary: '#f2f1ee',
       },

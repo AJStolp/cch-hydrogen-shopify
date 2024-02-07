@@ -1,12 +1,17 @@
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {Await, useLoaderData, Link, type MetaFunction} from '@remix-run/react';
+import {
+  Await,
+  useLoaderData,
+  Link,
+  type MetaFunction,
+  FetcherWithComponents,
+} from '@remix-run/react';
 import {Suspense} from 'react';
-import {Image, Money} from '@shopify/hydrogen';
+import {CartForm, Image, Money} from '@shopify/hydrogen';
 import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
-import Hero from '~/components/Hero';
 import HeroSlanted from '~/components/hero-slanted';
 
 export const meta: MetaFunction = () => {
@@ -31,6 +36,50 @@ export default function Homepage() {
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>
+  );
+}
+
+function AddToCartButton({
+  analytics,
+  children,
+  disabled,
+  variantId, // Accept the variant ID as a prop
+  onClick,
+}: {
+  analytics?: unknown;
+  children: React.ReactNode;
+  disabled?: boolean;
+  variantId: string; // Variant ID prop
+  onClick?: () => void;
+}) {
+  // Create the lines object with the correct structure
+  const lines = [
+    {
+      merchandiseId: variantId, // Use the variant ID
+      quantity: 1, // You can adjust the quantity as needed
+    },
+  ];
+
+  return (
+    <CartForm route="/cart" inputs={{lines}} action={CartForm.ACTIONS.LinesAdd}>
+      {(fetcher: FetcherWithComponents<any>) => (
+        <>
+          <input
+            name="analytics"
+            type="hidden"
+            value={JSON.stringify(analytics)}
+          />
+          <button
+            type="submit"
+            onClick={onClick}
+            disabled={disabled ?? fetcher.state !== 'idle'}
+            className="bg-primary rounded py-2 px-4 text-text"
+          >
+            {children}
+          </button>
+        </>
+      )}
+    </CartForm>
   );
 }
 
@@ -72,23 +121,32 @@ function RecommendedProducts({
           {({products}) => (
             <div className="recommended-products-grid w-fit">
               {products.nodes.map((product) => (
-                <Link
-                  key={product.id}
-                  className="recommended-product rounded-lg"
-                  to={`/products/${product.handle}`}
-                >
-                  <Image
-                    data={product.images.nodes[0]}
-                    aspectRatio="1/1"
-                    sizes="(min-width: 45em) 20vw, 50vw"
-                  />
-                  <section className="bg-accent text-white rounded p-2">
-                    <h4 className="text">{product.title}</h4>
-                    <small className="text-sm">
-                      <Money data={product.priceRange.minVariantPrice} />
-                    </small>
+                <section key={product.id}>
+                  <Link
+                    // key={product.id}
+                    className="recommended-product rounded-lg"
+                    to={`/products/${product.handle}`}
+                  >
+                    <Image
+                      data={product.images.nodes[0]}
+                      aspectRatio="1/1"
+                      sizes="(min-width: 45em) 20vw, 50vw"
+                    />
+                  </Link>
+                  <section className="bg-accent text-white rounded p-2 flex flex-col lg:flex-row lg:justify-between">
+                    <div className="pb-2">
+                      <h4 className="text">{product.title}</h4>
+                      <small className="text-sm">
+                        <Money data={product.priceRange.minVariantPrice} />
+                      </small>
+                    </div>
+                    <AddToCartButton
+                      variantId={product.variants.nodes[0].id} // Pass the variant ID
+                    >
+                      Add to Cart
+                    </AddToCartButton>
                   </section>
-                </Link>
+                </section>
               ))}
             </div>
           )}
@@ -127,6 +185,11 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
     id
     title
     handle
+    variants(first: 1) {
+      nodes {
+        id
+      }
+    }
     priceRange {
       minVariantPrice {
         amount
@@ -152,3 +215,34 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
     }
   }
 ` as const;
+
+// const RECOMMENDED_PRODUCTS_QUERY = `#graphql
+//   fragment RecommendedProduct on Product {
+//     id
+//     title
+//     handle
+//     priceRange {
+//       minVariantPrice {
+//         amount
+//         currencyCode
+//       }
+//     }
+//     images(first: 1) {
+//       nodes {
+//         id
+//         url
+//         altText
+//         width
+//         height
+//       }
+//     }
+//   }
+//   query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
+//     @inContext(country: $country, language: $language) {
+//     products(first: 4, sortKey: UPDATED_AT, reverse: true) {
+//       nodes {
+//         ...RecommendedProduct
+//       }
+//     }
+//   }
+// ` as const;

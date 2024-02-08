@@ -16,8 +16,8 @@ export default function HeroSlanted() {
           alt={''}
         />
       </div>
-      <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl py-10">
-        <div className="lg:mb-32 mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
+      <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl lg:py-10">
+        <div className="lg:mb-32 mt-6 lg:mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
           <h1 className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-6xl">
             Find Your Perfect Coffee Companion
           </h1>

@@ -92,18 +92,57 @@ function FeaturedCollection({
   const image = collection?.image;
   return (
     <section className="py-12">
-      <h2 className="text-xl">Signature sips</h2>
-      <Link
-        className="featured-collection"
-        to={`/collections/${collection.handle}`}
-      >
+      <h2 className="text-2xl">Signature sips</h2>
+      <div className="mx-auto rounded webkit h-full flex flex-col lg:flex-row">
         {image && (
-          <div className="featured-collection-image">
-            <Image data={image} sizes="100vw" />
+          <div className="featured-collection-image lg:w-full">
+            <Link
+              className="featured-collection"
+              to={`/collections/${collection.handle}`}
+            >
+              <svg
+                className="text-background absolute right-0 hidden h-full transform translate-x-1/2 lg:block"
+                viewBox="0 0 100 100"
+                fill="currentColor"
+                preserveAspectRatio="none slice"
+              >
+                <path d="M0 0H50L100 100H50L0 0Z" />
+              </svg>
+              <Image
+                className="object-cover w-full h-56 rounded h-full"
+                data={image}
+                sizes="100%"
+              />
+            </Link>
           </div>
         )}
-        <h2>{collection.title}</h2>
-      </Link>
+        <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl py-10">
+          <div className="lg:mb-32 mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
+            <a
+              href="/collections"
+              className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-4xl"
+            >
+              {collection.title}
+            </a>
+            <p>
+              Our Signature Sips collection isn't just about cups; it's a
+              playground of creativity, flavor, and charm waiting for you to
+              explore. Whether you prefer a cup that whispers classic charm or
+              one that screams bold personality, we've got the perfect match for
+              your daily brew. So, grab your favorite mug and let's embark on a
+              journey to find your new coffee companion!
+            </p>
+            <div className="flex items-center pt-4">
+              <a
+                href="/collections"
+                className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+              >
+                Shop Signature Sips
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -115,11 +154,11 @@ function RecommendedProducts({
 }) {
   return (
     <div className="recommended-products">
-      <h2 className="text-xl">Coffee Connoisseur's Picks</h2>
+      <h2 className="text-2xl">Coffee Connoisseur's Picks</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products-grid w-fit">
+            <div className="recommended-products-grid">
               {products.nodes.map((product) => (
                 <section key={product.id}>
                   <Link

@@ -1,7 +1,7 @@
 export default function HeroSlanted() {
   return (
     <div className="relative flex flex-col lg:flex-col lg:pb-0 lg:mt-12">
-      <div className="bg-sSecondary mx-auto rounded top-0 right-0 z-0 w-full lg:pr-0 lg:mb-0 lg:mx-0 lg:w-6/12 lg:max-w-full lg:absolute webkit h-full">
+      <div className="bg-sSecondary mx-auto rounded top-0 right-0 z-0 w-full lg:pr-0 lg:mb-0 lg:mx-0 lg:w-6/12 lg:max-w-full lg:absolute h-full">
         <svg
           className="text-background absolute left-0 hidden h-full transform -translate-x-1/2 lg:block"
           viewBox="0 0 100 100"

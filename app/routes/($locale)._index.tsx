@@ -116,15 +116,15 @@ function FeaturedCollection({
             </Link>
           </div>
         )}
-        <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl py-10">
-          <div className="lg:mb-32 mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
+        <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl lg:py-10">
+          <div className="lg:mb-32 mt-4 lg:mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
             <a
               href="/collections"
-              className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-4xl"
+              className="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-4xl"
             >
               {collection.title}
             </a>
-            <p>
+            <p className="py-2">
               Our Signature Sips collection isn't just about cups; it's a
               playground of creativity, flavor, and charm waiting for you to
               explore. Whether you prefer a cup that whispers classic charm or

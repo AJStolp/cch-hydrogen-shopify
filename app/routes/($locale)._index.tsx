@@ -92,7 +92,6 @@ function FeaturedCollection({
   const image = collection?.image;
   return (
     <section className="py-12">
-      <h2 className="text-2xl">Signature sips</h2>
       <div className="mx-auto rounded h-full flex flex-col lg:flex-row">
         {image && (
           <div className="featured-collection-image lg:w-full">
@@ -119,10 +118,10 @@ function FeaturedCollection({
         <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl lg:py-10">
           <div className="lg:mb-32 mt-4 lg:mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
             <a
-              to={`/collections/${collection.handle}`}
+              href={`/collections/${collection.handle}`}
               className="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-4xl"
             >
-              {collection.title}
+              Signature Sips: {collection.title}
             </a>
             <p className="py-2">
               Our Signature Sips collection isn't just about cups; it's a

@@ -93,15 +93,15 @@ function FeaturedCollection({
   return (
     <section className="py-12">
       <h2 className="text-2xl">Signature sips</h2>
-      <div className="mx-auto rounded webkit h-full flex flex-col lg:flex-row">
+      <div className="mx-auto rounded h-full flex flex-col lg:flex-row">
         {image && (
           <div className="featured-collection-image lg:w-full">
             <Link
-              className="featured-collection"
+              className="featured-collection lg:block lg:h-full"
               to={`/collections/${collection.handle}`}
             >
               <svg
-                className="text-background absolute right-0 hidden h-full transform translate-x-1/2 lg:block"
+                className="text-background absolute right-0 hidden h-full transform translate-x-1/2 lg:!block"
                 viewBox="0 0 100 100"
                 fill="currentColor"
                 preserveAspectRatio="none slice"

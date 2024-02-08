@@ -316,11 +316,11 @@ aside li {
   }
 }
 
-.featured-collection img {
+/* .featured-collection img {
   height: auto;
   max-height: 100%;
   object-fit: cover;
-}
+} */
 
 .recommended-product:hover {
   text-decoration-color: white;

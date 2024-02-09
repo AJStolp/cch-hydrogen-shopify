@@ -117,10 +117,7 @@ function FeaturedCollection({
         )}
         <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl lg:py-10">
           <div className="lg:mb-32 mt-4 lg:mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
-            <h2
-              href={`/collections/${collection.handle}`}
-              className="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-4xl"
-            >
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-4xl">
               Signature Sips: {collection.title}
             </h2>
             <p className="py-2">

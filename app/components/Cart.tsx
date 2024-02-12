@@ -249,17 +249,6 @@ export function CartEmpty({
         started!
       </p>
       <br />
-      <Link
-        to="/collections"
-        onClick={() => {
-          if (layout === 'aside') {
-            window.location.href = '/collections';
-          }
-        }}
-        className="bg-secondary rounded py-2 px-4"
-      >
-        Continue shopping →
-      </Link>
     </div>
   );
 }

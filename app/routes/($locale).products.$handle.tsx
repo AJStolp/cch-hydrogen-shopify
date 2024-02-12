@@ -190,7 +190,7 @@ function ProductMain({
       <br />
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
       <br />
-      <Link to="/collections/all" className="bg-secondary rounded py-2 px-4">
+      <Link to="/collections" className="bg-secondary rounded py-2 px-4">
         Continue shopping →
       </Link>
     </div>

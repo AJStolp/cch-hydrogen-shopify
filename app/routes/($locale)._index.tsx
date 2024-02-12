@@ -130,7 +130,7 @@ function FeaturedCollection({
             </p>
             <div className="flex items-center pt-4">
               <a
-                href="/collections/${collection.handle}"
+                href={`/collections/${collection.handle}`}
                 className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
               >
                 Shop Signature Sips
@@ -168,7 +168,7 @@ function RecommendedProducts({
                       sizes="(min-width: 45em) 20vw, 50vw"
                     />
                   </Link>
-                  <section className="bg-accent text-white rounded p-2 flex flex-col lg:flex-row lg:justify-between">
+                  <section className="bg-sAccent text-text rounded p-2 flex flex-col lg:flex-row lg:justify-between">
                     <div className="pb-2">
                       <h4 className="text">{product.title}</h4>
                       <small className="text-sm">

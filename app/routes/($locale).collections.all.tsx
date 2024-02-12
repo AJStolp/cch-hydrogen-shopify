@@ -39,7 +39,7 @@ export default function AllProducts() {
             <PreviousLink>
               {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
             </PreviousLink>
-            <ProductsGrid products={nodes} />
+            {/* <ProductsGrid products={nodes} /> */}
             <br />
             <NextLink>
               {isLoading ? 'Loading...' : <span>Load more ↓</span>}

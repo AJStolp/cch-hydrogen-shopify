@@ -1,5 +1,5 @@
 import {Await, NavLink} from '@remix-run/react';
-import {Suspense} from 'react';
+import {Suspense, useRef, useState, useEffect} from 'react';
 import type {HeaderQuery} from 'storefrontapi.generated';
 import type {LayoutProps} from './Layout';
 import {useRootLoaderData} from '~/root';
@@ -10,6 +10,7 @@ type Viewport = 'desktop' | 'mobile';
 
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
+
   return (
     <header className="header bg-background">
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
@@ -24,7 +25,6 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
     </header>
   );
 }
-
 export function HeaderMenu({
   menu,
   primaryDomainUrl,
@@ -36,49 +36,73 @@ export function HeaderMenu({
 }) {
   const {publicStoreDomain} = useRootLoaderData();
   const className = `header-menu-${viewport}`;
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [activeItemId, setActiveItemId] = useState<string | null>(null);
 
-  function closeAside(event: React.MouseEvent<HTMLAnchorElement>) {
-    if (viewport === 'mobile') {
-      event.preventDefault();
-      window.location.href = event.currentTarget.href;
+  function handleItemMouseEnter(itemId: string) {
+    setActiveItemId(itemId);
+    const dropdown = dropdownRef.current;
+    if (dropdown) {
+      dropdown.classList.remove('hidden'); // Show the dropdown menu
+    }
+  }
+
+  function handleItemMouseLeave() {
+    setActiveItemId(null);
+    const dropdown = dropdownRef.current;
+    if (dropdown) {
+      dropdown.classList.add('hidden'); // Hide the dropdown menu
     }
   }
 
   return (
-    <nav className={className} role="navigation">
-      {/* {viewport === 'mobile' && (
-        <NavLink
-          end
-          onClick={closeAside}
-          prefetch="intent"
-          style={activeLinkStyle}
-          to="/"
-        >
-          Home
-        </NavLink>
-      )} */}
+    <nav className={className}>
       {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
         if (!item.url) return null;
 
-        // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
           item.url.includes(publicStoreDomain) ||
           item.url.includes(primaryDomainUrl)
             ? new URL(item.url).pathname
             : item.url;
+
         return (
-          <NavLink
-            className="header-menu-item"
-            end
+          <div
             key={item.id}
-            onClick={closeAside}
-            prefetch="intent"
-            style={activeLinkStyle}
-            to={url}
+            className="relative"
+            onMouseEnter={() => handleItemMouseEnter(item.id)}
+            onMouseLeave={handleItemMouseLeave}
           >
-            {item.title}
-          </NavLink>
+            <NavLink
+              end
+              prefetch="intent"
+              style={activeLinkStyle}
+              to={url}
+              className="block px-4 py-2"
+            >
+              {item.title}
+            </NavLink>
+            {item.items && activeItemId === item.id && (
+              <div
+                ref={dropdownRef}
+                className={`absolute top-full left-0 mt-2 w-48 bg-white border border-text rounded-lg shadow-lg z-10 hidden`}
+              >
+                {item.items.map((subItem) => (
+                  <NavLink
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    end
+                    key={subItem.id}
+                    prefetch="intent"
+                    style={activeLinkStyle}
+                    to={subItem.url}
+                  >
+                    {subItem.title}
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
         );
       })}
     </nav>

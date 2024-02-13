@@ -98,6 +98,7 @@ function FeaturedCollection({
             <Link
               className="featured-collection lg:block lg:h-full"
               to={`/collections/${collection.handle}`}
+              aria-label="Signature Sips Collections"
             >
               <svg
                 className="text-background absolute right-0 hidden h-full transform translate-x-1/2 lg:!block"
@@ -170,7 +171,7 @@ function RecommendedProducts({
                   </Link>
                   <section className="bg-sAccent text-text rounded p-2 flex flex-col lg:flex-row lg:justify-between">
                     <div className="pb-2">
-                      <h4 className="text">{product.title}</h4>
+                      <h3 className="text">{product.title}</h3>
                       <small className="text-sm">
                         <Money data={product.priceRange.minVariantPrice} />
                       </small>

@@ -94,6 +94,7 @@ function ProductItem({
       key={product.id}
       prefetch="intent"
       to={variantUrl}
+      aria-label={product.title}
     >
       {product.featuredImage && (
         <Image

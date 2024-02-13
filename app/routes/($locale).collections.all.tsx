@@ -11,7 +11,14 @@ import type {ProductItemFragment} from 'storefrontapi.generated';
 import {useVariantUrl} from '~/utils';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
-  return [{title: 'All Products'}];
+  return [
+    {title: 'All Products'},
+    {
+      name: 'description',
+      content:
+        'Browse our diverse selection of premium coffee mugs and tumblers, featuring 15 oz ceramic mugs in elegant white and sleek black, alongside stylish tumblers. Ideal for coffee lovers and perfect for any occasion. Shop the collection today!',
+    },
+  ];
 };
 
 export async function loader({request, context}: LoaderFunctionArgs) {
@@ -82,6 +89,7 @@ function ProductItem({
       key={product.id}
       prefetch="intent"
       to={variantUrl}
+      aria-label={product.title}
     >
       {product.featuredImage && (
         <Image
@@ -92,7 +100,7 @@ function ProductItem({
           sizes="(min-width: 45em) 400px, 100vw"
         />
       )}
-      <h4>{product.title}</h4>
+      <h2>{product.title}</h2>
       <small>
         <Money data={product.priceRange.minVariantPrice} />
       </small>

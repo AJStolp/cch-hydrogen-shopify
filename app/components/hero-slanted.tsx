@@ -12,7 +12,7 @@ export default function HeroSlanted() {
         </svg>
         <img
           className="object-cover w-full h-56 rounded h-full"
-          src={'/assets/tiki-hero-cch.webp'}
+          src={'/assets/tiki-hero-cch-4x-transformed.webp'}
           alt={''}
         />
       </div>

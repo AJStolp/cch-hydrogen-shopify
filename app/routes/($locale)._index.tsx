@@ -15,7 +15,14 @@ import type {
 import HeroSlanted from '~/components/hero-slanted';
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Coffee Cup Hut'}];
+  return [
+    {title: 'Coffee Cup Hut home'},
+    {
+      name: 'description',
+      content:
+        'Welcome to Coffee Cup Hut – your premier destination for high-quality 15 oz ceramic coffee mugs and unique tumblers. Discover our collection of beautifully designed coffee accessories tailored for every taste. Experience the perfect blend of style and functionality with our exclusive range. Start your journey with us today!',
+    },
+  ];
 };
 
 export async function loader({context}: LoaderFunctionArgs) {

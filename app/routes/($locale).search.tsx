@@ -5,7 +5,14 @@ import {getPaginationVariables} from '@shopify/hydrogen';
 import {SearchForm, SearchResults, NoSearchResults} from '~/components/Search';
 
 export const meta: MetaFunction = () => {
-  return [{title: `Coffee Cup Hut | Search`}];
+  return [
+    {title: `Coffee Cup Hut | Search`},
+    {
+      name: 'description',
+      content:
+        "Find exactly what you're looking for at Coffee Cup Hut with our easy-to-use search feature. Explore a wide selection of 15 oz ceramic coffee mugs, tumblers, and more to find your perfect coffee companion. Start your search now and discover your next favorite coffee accessory!",
+    },
+  ];
 };
 
 export async function loader({request, context}: LoaderFunctionArgs) {

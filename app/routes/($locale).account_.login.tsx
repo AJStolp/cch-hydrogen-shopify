@@ -11,7 +11,14 @@ type ActionResponse = {
 };
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Login'}];
+  return [
+    {title: 'Login'},
+    {
+      name: 'description',
+      content:
+        'Access your Coffee Cup Hut account to track orders, save favorites, and manage your 15 oz ceramic coffee mugs and tumblers purchases with ease. New to Coffee Cup Hut? Register today to start your personalized shopping experience!',
+    },
+  ];
 };
 
 export async function loader({context}: LoaderFunctionArgs) {

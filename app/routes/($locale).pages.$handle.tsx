@@ -16,6 +16,11 @@ export const meta: MetaFunction<typeof loader> = ({data}) => {
       description =
         'Discover the story behind Coffee Cup Hut, your go-to destination for premium 15 oz ceramic coffee mugs and unique tumblers. Learn about our passion for high-quality, stylish coffee accessories and our commitment to coffee lovers everywhere. Visit our About page to know more!';
       break;
+    case 'Coffee Cup Hut Return Policy':
+      title = `Coffee Cup Hut | ${data?.page.title ?? ''}`;
+      description =
+        "Read Coffee Cup Hut’s Return Policy to understand how we ensure your satisfaction with every purchase. Learn about our hassle-free returns process for our 15 oz ceramic coffee mugs and tumblers. Shop with confidence knowing we've got you covered.";
+      break;
   }
 
   return [{title}, {name: 'description', content: description}];

@@ -1,7 +1,22 @@
 import {useLoaderData, Link} from '@remix-run/react';
-import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import {
+  json,
+  MetaFunction,
+  type LoaderFunctionArgs,
+} from '@shopify/remix-oxygen';
 import {Pagination, getPaginationVariables, Image} from '@shopify/hydrogen';
 import type {CollectionFragment} from 'storefrontapi.generated';
+
+export const meta: MetaFunction<typeof loader> = ({data}) => {
+  return [
+    {title: `Coffee Cup Hut | All Products`},
+    {
+      name: 'description',
+      content:
+        'Explore our exclusive collection of 15oz ceramic coffee mugs, available in sleek black and classic white. Perfect for coffee enthusiasts seeking style and quality. Shop now!',
+    },
+  ];
+};
 
 export async function loader({context, request}: LoaderFunctionArgs) {
   const paginationVariables = getPaginationVariables(request, {
@@ -75,7 +90,7 @@ function CollectionItem({
           className="max-w-full"
         />
       )}
-      <h5>{collection.title}</h5>
+      <h2>{collection.title}</h2>
     </Link>
   );
 }

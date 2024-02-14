@@ -174,6 +174,7 @@ function RecommendedProducts({
                       data={product.images.nodes[0]}
                       aspectRatio="1/1"
                       sizes="(min-width: 45em) 20vw, 50vw"
+                      alt={`product name: ${product.title}`}
                     />
                   </Link>
                   <section className="bg-sAccent text-text rounded p-2 flex flex-col lg:flex-row lg:justify-between">

@@ -496,3 +496,13 @@ aside li {
   padding-left: 6px;
 }
 
+.carousel {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-item {
+  scroll-snap-align: center;
+  width: 100%;
+  /* Adjust based on your design */
+}

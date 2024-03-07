@@ -20,6 +20,7 @@ import {
   type VariantOption,
   getSelectedProductOptions,
   CartForm,
+  SeoHandleFunction,
 } from '@shopify/hydrogen';
 import type {
   CartLineInput,
@@ -27,8 +28,22 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import {getVariantUrl} from '~/utils';
 
+const seo: SeoHandleFunction<typeof loader> = ({data}) => ({
+  title: data?.product?.seo?.title,
+  description: data?.product?.seo?.description,
+});
+export const handle = {
+  seo,
+};
+
 export const meta: MetaFunction<typeof loader> = ({data}) => {
-  return [{title: `Coffee Cup Hut | ${data?.product.title ?? ''}`}];
+  return [
+    {title: `Coffee Cup Hut | ${data?.product.title ?? ''}`},
+    {
+      name: 'description',
+      content: `${data?.product.seo.description}`,
+    },
+  ];
 };
 
 export async function loader({params, request, context}: LoaderFunctionArgs) {
@@ -197,7 +212,9 @@ function ProductMain({
   const {title, descriptionHtml} = product;
   return (
     <div className="product-main">
-      <h1>{title}</h1>
+      <h1 className="text-2xl">
+        <strong>{title}</strong>
+      </h1>
       <ProductPrice selectedVariant={selectedVariant} />
       <br />
       <Suspense
@@ -224,9 +241,9 @@ function ProductMain({
       </Suspense>
       <br />
       <br />
-      <p>
-        <strong>Description</strong>
-      </p>
+      <h2 className="text-base">
+        <strong>Product Overview</strong>
+      </h2>
       <br />
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
       <br />
@@ -452,6 +469,10 @@ const PRODUCT_QUERY = `#graphql
   ) @inContext(country: $country, language: $language) {
     product(handle: $handle) {
       ...Product
+      	seo {
+        description
+        title
+      }
     }
   }
   ${PRODUCT_FRAGMENT}

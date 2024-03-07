@@ -9,17 +9,17 @@ export const meta: MetaFunction<typeof loader> = ({data}) => {
     case 'Contact Us':
       title = `Coffee Cup Hut | ${data?.page.title ?? ''}`;
       description =
-        'Get in touch with Coffee Cup Hut today! Whether you have questions about our 15 oz ceramic coffee mugs, tumblers, or any inquiries, our team is here to assist you. Visit our Contact page for all the ways to connect with us.';
+        'Connect with Coffee Cup Hut today! Have questions about our 15 oz ceramic mugs or tumblers? Our team is here to help. Visit now!';
       break;
     case 'Welcome to The Coffee Cup Hut: A Journey of Caffeinated Creativity':
       title = `Coffee Cup Hut | ${data?.page.title ?? ''}`;
       description =
-        'Discover the story behind Coffee Cup Hut, your go-to destination for premium 15 oz ceramic coffee mugs and unique tumblers. Learn about our passion for high-quality, stylish coffee accessories and our commitment to coffee lovers everywhere. Visit our About page to know more!';
+        "Discover Coffee Cup Hut's story, your destination for 15 oz ceramic mugs & tumblers. Learn about our passion for quality & style. Visit now!";
       break;
     case 'Coffee Cup Hut Return Policy':
       title = `Coffee Cup Hut | ${data?.page.title ?? ''}`;
       description =
-        "Read Coffee Cup Hut’s Return Policy to understand how we ensure your satisfaction with every purchase. Learn about our hassle-free returns process for our 15 oz ceramic coffee mugs and tumblers. Shop with confidence knowing we've got you covered.";
+        "Discover Coffee Cup Hut's hassle-free return policy for our 15 oz ceramic mugs & tumblers. Shop with confidence knowing we've got you covered.";
       break;
   }
 

@@ -20,7 +20,7 @@ export const meta: MetaFunction = () => {
     {
       name: 'description',
       content:
-        'Welcome to Coffee Cup Hut – your premier destination for high-quality 15 oz ceramic coffee mugs and unique tumblers. Discover our collection of beautifully designed coffee accessories tailored for every taste. Experience the perfect blend of style and functionality with our exclusive range. Start your journey with us today!',
+        'Welcome to Coffee Cup Hut – your go-to for 15 oz ceramic mugs & tumblers. Find stylish coffee accessories here. Start your journey today!',
     },
   ];
 };
@@ -119,6 +119,8 @@ function FeaturedCollection({
                 className="object-cover w-full h-56 rounded h-full"
                 data={image}
                 sizes="100%"
+                alt=""
+                aria-hidden="true"
               />
             </Link>
           </div>

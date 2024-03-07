@@ -13,7 +13,7 @@ export const meta: MetaFunction<typeof loader> = ({data}) => {
     {
       name: 'description',
       content:
-        'Explore our exclusive collection of 15oz ceramic coffee mugs, available in sleek black and classic white. Perfect for coffee enthusiasts seeking style and quality. Shop now!',
+        'Explore our exclusive 15oz ceramic coffee mugs, in black and white. Perfect for coffee lovers. Shop now!',
     },
   ];
 };

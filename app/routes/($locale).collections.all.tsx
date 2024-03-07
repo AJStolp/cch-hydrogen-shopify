@@ -16,7 +16,7 @@ export const meta: MetaFunction<typeof loader> = ({data}) => {
     {
       name: 'description',
       content:
-        'Browse our diverse selection of premium coffee mugs and tumblers, featuring 15 oz ceramic mugs in elegant white and sleek black, alongside stylish tumblers. Ideal for coffee lovers and perfect for any occasion. Shop the collection today!',
+        'Browse premium coffee mugs & tumblers. Discover elegant white & sleek black 15 oz ceramic mugs alongside stylish tumblers. Shop now!',
     },
   ];
 };

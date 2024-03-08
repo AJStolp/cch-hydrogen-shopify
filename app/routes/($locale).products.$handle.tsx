@@ -212,7 +212,7 @@ function ProductMain({
   const {title, descriptionHtml} = product;
   return (
     <div className="product-main">
-      <h1 className="text-3xl">
+      <h1 className="text-3xl text-black">
         <strong>{title}</strong>
       </h1>
       <ProductPrice selectedVariant={selectedVariant} />
@@ -241,7 +241,7 @@ function ProductMain({
       </Suspense>
       <br />
       <br />
-      <h2 className="text-xl">
+      <h2 className="text-xl text-black">
         <strong>Product Overview</strong>
       </h2>
       <br />

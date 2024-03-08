@@ -534,3 +534,13 @@ aside li {
   animation: scaleAndRockThenPause 10s ease-in-out infinite;
   transform-origin: center;
 }
+
+.p-spec-heading {
+  color: black;
+  padding: 4px 0;
+}
+
+.p-spec {
+  padding-left: 25px;
+  list-style: unset;
+}

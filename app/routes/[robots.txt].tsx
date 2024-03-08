@@ -38,6 +38,8 @@ ${shopId ? `Disallow: /${shopId}/orders` : ''}
 Disallow: /*?*oseid=*
 Disallow: /*preview_theme_id*
 Disallow: /*preview_script_id*
+Disallow: /collections/*?*direction=
+Disallow: /collections/*?*cursor=
 
 User-agent: Nutch
 Disallow: /

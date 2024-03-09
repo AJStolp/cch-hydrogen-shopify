@@ -11,7 +11,7 @@ export const meta: MetaFunction<typeof loader> = ({data}) => {
       description =
         'Connect with Coffee Cup Hut today! Have questions about our 15 oz ceramic mugs or tumblers? Our team is here to help. Visit now!';
       break;
-    case 'Welcome to The Coffee Cup Hut: A Journey of Caffeinated Creativity':
+    case 'A Journey of Caffeinated Creativity':
       title = `Coffee Cup Hut | ${data?.page.title ?? ''}`;
       description =
         "Discover Coffee Cup Hut's story, your destination for 15 oz ceramic mugs & tumblers. Learn about our passion for quality & style. Visit now!";

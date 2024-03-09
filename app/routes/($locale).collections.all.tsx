@@ -12,7 +12,7 @@ import {useVariantUrl} from '~/utils';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [
-    {title: 'All Products'},
+    {title: 'Coffee Cup Hut | All Products'},
     {
       name: 'description',
       content:

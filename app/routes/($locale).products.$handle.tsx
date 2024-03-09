@@ -244,7 +244,6 @@ function ProductMain({
       <h2 className="text-xl text-black">
         <strong>Product Overview</strong>
       </h2>
-      <br />
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
       <br />
       <Link to="/collections/all" className="bg-secondary rounded py-2 px-4">

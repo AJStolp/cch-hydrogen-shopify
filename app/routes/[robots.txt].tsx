@@ -110,6 +110,10 @@ Allow: /search/
 Disallow: /search/?*
 Disallow: /apple-app-site-association
 Disallow: /.well-known/shopify/monorail
+Disallow: /collections/*?*direction=
+Disallow: /collections/*?*cursor=
+Disallow: /*_pos=
+Disallow: /*direction=
 ${sitemapUrl ? `Sitemap: ${sitemapUrl}` : ''}`;
 }
 

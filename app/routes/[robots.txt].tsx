@@ -41,6 +41,9 @@ Disallow: /*preview_script_id*
 Disallow: /collections/*?*direction=
 Disallow: /collections/*?*cursor=
 
+Disallow: /*_pos=
+Disallow: /*direction=
+
 User-agent: Nutch
 Disallow: /
 

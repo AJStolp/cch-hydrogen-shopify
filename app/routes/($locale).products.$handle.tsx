@@ -426,6 +426,7 @@ const PRODUCT_FRAGMENT = `#graphql
       title
       vendor
       handle
+      tags
       descriptionHtml
       description
       options {

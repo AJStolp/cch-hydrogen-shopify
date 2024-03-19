@@ -37,6 +37,12 @@ export async function loader({request, context}: LoaderFunctionArgs) {
 export default function AllProducts() {
   const {products} = useLoaderData<typeof loader>();
 
+  const filteredCollections = products.nodes.filter(
+    (node: any) => node.metafield && node.metafield.value === 'cch',
+  ) as ProductItemFragment[];
+
+  console.log(products.nodes.tags, 'produtsss');
+
   return (
     <div className="collection">
       <h1>All Products</h1>
@@ -46,7 +52,7 @@ export default function AllProducts() {
             <PreviousLink>
               {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
             </PreviousLink>
-            <ProductsGrid products={nodes} />
+            <ProductsGrid products={filteredCollections} />
             <br />
             <NextLink>
               {isLoading ? 'Loading...' : <span>Load more ↓</span>}
@@ -117,6 +123,9 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
     id
     handle
     title
+    metafield(namespace: "ptosf", key: "storefront") {
+        value
+      }
     featuredImage {
       id
       altText
@@ -161,6 +170,8 @@ const ALL_PRODUCTS_QUERY = `#graphql
     ) {
       nodes {
         ...ProductItem
+        tags
+      
       }
       pageInfo {
         hasPreviousPage

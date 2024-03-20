@@ -166,7 +166,7 @@ function RecommendedProducts({
           {({products}) => {
             // Filter products based on the value of the metafield
             const filteredProducts = products.nodes.filter((product) => {
-              return product.metafield?.value === 'cch'; // Adjust 'cch' to the desired value
+              return product.metafield?.value === 'cch';
             });
 
             return (

@@ -164,10 +164,14 @@ function RecommendedProducts({
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => {
-            // Filter products based on the value of the metafield
+            // Filter products based on metafield value
             const filteredProducts = products.nodes.filter((product) => {
               return product.metafield?.value === 'cch';
             });
+
+            if (filteredProducts.length === 0) {
+              return <div>No recommended products found.</div>;
+            }
 
             return (
               <div className="recommended-products-grid">
@@ -234,7 +238,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   fragment RecommendedProduct on Product {
     id
     title
-    metafield(namespace: "ptosf",  key: "storefront") {
+    metafield(namespace: "ptosf", key: "storefront") {
       value
     }
     handle

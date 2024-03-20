@@ -207,64 +207,6 @@ function RecommendedProducts({
   );
 }
 
-// function RecommendedProducts({
-//   products,
-// }: {
-//   products: Promise<RecommendedProductsQuery>;
-// }) {
-//   return (
-//     <div className="recommended-products">
-//       <h2 className="text-2xl">Coffee Connoisseur's Picks</h2>
-//       <Suspense fallback={<div>Loading...</div>}>
-//         <Await resolve={products}>
-//           {({products}) => {
-//             // Filter products based on metafield value
-//             const filteredProducts = products.nodes.filter((product) => {
-//               return product.metafield?.value === 'cch';
-//             });
-
-//             if (filteredProducts.length === 0) {
-//               return <div>No recommended products found.</div>;
-//             }
-
-//             return (
-//               <div className="recommended-products-grid">
-//                 {filteredProducts.map((product) => (
-//                   <section key={product.id}>
-//                     <Link
-//                       className="recommended-product rounded-lg"
-//                       to={`/products/${product.handle}`}
-//                     >
-//                       <Image
-//                         data={product.images.nodes[0]}
-//                         aspectRatio="1/1"
-//                         sizes="(min-width: 45em) 20vw, 50vw"
-//                         alt={`product name: ${product.title}`}
-//                       />
-//                     </Link>
-//                     <section className="bg-sAccent text-text rounded p-2 flex flex-col lg:flex-row lg:justify-between">
-//                       <div className="pb-2">
-//                         <h3 className="text">{product.title}</h3>
-//                         <small className="text-sm">
-//                           <Money data={product.priceRange.minVariantPrice} />
-//                         </small>
-//                       </div>
-//                       <AddToCartButton variantId={product.variants.nodes[0].id}>
-//                         Add to Cart
-//                       </AddToCartButton>
-//                     </section>
-//                   </section>
-//                 ))}
-//               </div>
-//             );
-//           }}
-//         </Await>
-//       </Suspense>
-//       <br />
-//     </div>
-//   );
-// }
-
 const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
     id
@@ -287,45 +229,6 @@ const FEATURED_COLLECTION_QUERY = `#graphql
     }
   }
 ` as const;
-
-// const RECOMMENDED_PRODUCTS_QUERY = `#graphql
-//   fragment RecommendedProduct on Product {
-//     id
-//     title
-//     metafield(namespace: "ptosf", key: "storefront") {
-//       value
-//     }
-//     handle
-//     variants(first: 1) {
-//       nodes {
-//         id
-//       }
-//     }
-//     priceRange {
-//       minVariantPrice {
-//         amount
-//         currencyCode
-//       }
-//     }
-//     images(first: 1) {
-//       nodes {
-//         id
-//         url
-//         altText
-//         width
-//         height
-//       }
-//     }
-//   }
-//   query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
-//     @inContext(country: $country, language: $language) {
-//     products(first: 4, sortKey: UPDATED_AT, reverse: true) {
-//       nodes {
-//         ...RecommendedProduct
-//       }
-//     }
-//   }
-// ` as const;
 
 const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   fragment RecommendedProduct on Product {
@@ -358,7 +261,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   }
   query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    products(first: 4, sortKey: UPDATED_AT) {
+    products(first: 4) {
       nodes {
         ...RecommendedProduct
       }

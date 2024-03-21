@@ -164,18 +164,9 @@ function RecommendedProducts({
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => {
-            // Filter products based on metafield value
-            const filteredProducts = products.nodes.filter((product) => {
-              return product.metafield?.value === 'cch';
-            });
-
-            if (filteredProducts.length === 0) {
-              return <div>No recommended products found.</div>;
-            }
-
             return (
               <div className="recommended-products-grid">
-                {filteredProducts.map((product) => (
+                {products.nodes.map((product) => (
                   <section key={product.id}>
                     <Link
                       className="recommended-product rounded-lg"
@@ -226,7 +217,7 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   }
   query FeaturedCollection($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    collections(first: 1, sortKey: UPDATED_AT, reverse: true) {
+    collections(first: 1,  query: "metafield:tosf:storefront:cch") {
       nodes {
         ...FeaturedCollection
       }

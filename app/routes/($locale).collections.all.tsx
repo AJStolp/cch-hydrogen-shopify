@@ -37,11 +37,9 @@ export async function loader({request, context}: LoaderFunctionArgs) {
 export default function AllProducts() {
   const {products} = useLoaderData<typeof loader>();
 
-  const filteredCollections = products.nodes.filter(
-    (node: any) => node.metafield && node.metafield.value === 'cch',
-  ) as ProductItemFragment[];
-
-  console.log(products.nodes.tags, 'produtsss');
+  // const filteredCollections = products.nodes.filter(
+  //   (node: any) => node.metafield && node.metafield.value === 'cch',
+  // ) as ProductItemFragment[];
 
   return (
     <div className="collection">
@@ -52,7 +50,7 @@ export default function AllProducts() {
             <PreviousLink>
               {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
             </PreviousLink>
-            <ProductsGrid products={filteredCollections} />
+            <ProductsGrid products={nodes as ProductItemFragment[]} />
             <br />
             <NextLink>
               {isLoading ? 'Loading...' : <span>Load more ↓</span>}

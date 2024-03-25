@@ -97,15 +97,17 @@ function FeaturedCollection({
 }) {
   if (!collection) return null;
   const image = collection?.image;
+  const filteredCollection = collection.metafield?.value == 'cch' ? image : '';
+
   return (
     <section className="py-12">
       <div className="mx-auto rounded h-full flex flex-col lg:flex-row">
-        {image && (
+        {filteredCollection && (
           <div className="featured-collection-image lg:w-full">
             <Link
               className="featured-collection lg:block lg:h-full"
               to={`/collections/${collection.handle}`}
-              aria-label="Signature Sips Collections"
+              aria-label="Signature Sips"
             >
               <svg
                 className="text-background absolute right-0 hidden h-full transform translate-x-1/2 lg:!block"
@@ -117,7 +119,7 @@ function FeaturedCollection({
               </svg>
               <Image
                 className="object-cover w-full h-56 rounded h-full"
-                data={image}
+                data={filteredCollection}
                 sizes="100%"
                 alt=""
                 aria-hidden="true"
@@ -160,13 +162,16 @@ function RecommendedProducts({
 }) {
   return (
     <div className="recommended-products">
-      <h2 className="text-2xl">Coffee Connoisseur's Picks</h2>
+      <h2>Coffee Connoisseur's Picks</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => {
+            const filteredProducts = products.nodes.filter(
+              (product) => product.metafield?.value === 'cch', // Adjust filter logic
+            );
             return (
               <div className="recommended-products-grid">
-                {products.nodes.map((product) => (
+                {filteredProducts.map((product) => (
                   <section key={product.id}>
                     <Link
                       className="recommended-product rounded-lg"
@@ -206,6 +211,9 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
     id
     title
+    metafield(namespace: "tosf", key: "storefront") {
+      value
+    }
     image {
       id
       url

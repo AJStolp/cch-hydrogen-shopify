@@ -37,14 +37,14 @@ export async function loader({request, context}: LoaderFunctionArgs) {
 export default function AllProducts() {
   const {products} = useLoaderData<typeof loader>();
 
-  // const filteredCollections = products.nodes.filter(
-  //   (node: any) => node.metafield && node.metafield.value === 'cch',
-  // ) as ProductItemFragment[];
+  const filteredProducts = products.nodes.filter(
+    (node: any) => node.metafield && node.metafield.value === 'cch',
+  );
 
   return (
     <div className="collection">
       <h1>All Products</h1>
-      <Pagination connection={products}>
+      <Pagination connection={{...products, nodes: filteredProducts}}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <>
             <PreviousLink>
@@ -169,7 +169,6 @@ const ALL_PRODUCTS_QUERY = `#graphql
       nodes {
         ...ProductItem
         tags
-      
       }
       pageInfo {
         hasPreviousPage

@@ -165,6 +165,7 @@ const ALL_PRODUCTS_QUERY = `#graphql
       last: $last
       before: $startCursor
       after: $endCursor
+      query: "metafield:ptosf.storefront:cch"
     ) {
       nodes {
         ...ProductItem

@@ -88,13 +88,12 @@ function CollectionItem({
       {collection?.image && (
         <Image
           alt={collection.image.altText || collection.title}
-          // aspectRatio="1/1"
+          aspectRatio="1/1"
           data={collection.image}
           loading={index < 3 ? 'eager' : undefined}
-          className="max-w-full"
         />
       )}
-      <h2>{collection.title}</h2>
+      <h5>{collection.title}</h5>
     </Link>
   );
 }
@@ -127,7 +126,8 @@ const COLLECTIONS_QUERY = `#graphql
       first: $first,
       last: $last,
       before: $startCursor,
-      after: $endCursor
+      after: $endCursor,
+      query: "metafield:tosf:storefront:cch"
     ) {
       nodes {
         ...Collection

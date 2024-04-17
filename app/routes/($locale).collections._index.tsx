@@ -33,14 +33,10 @@ export async function loader({context, request}: LoaderFunctionArgs) {
 export default function Collections() {
   const {collections} = useLoaderData<typeof loader>();
 
-  const filteredCollections = collections.nodes.filter(
-    (node: any) => node.metafield && node.metafield.value === 'cch',
-  ) as CollectionFragment[];
-
   return (
     <div className="collections">
       <h1 className="text-2xl">Cafe Collections</h1>
-      <Pagination connection={{...collections, nodes: filteredCollections}}>
+      <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <div>
             <PreviousLink>
@@ -103,9 +99,6 @@ const COLLECTIONS_QUERY = `#graphql
     id
     title
     handle
-    metafield(namespace: "tosf", key: "storefront") {
-      value
-    }
     image {
       id
       url

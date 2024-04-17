@@ -1,4 +1,3 @@
-// Import necessary modules
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, Link, type MetaFunction} from '@remix-run/react';
 import {
@@ -37,14 +36,10 @@ export async function loader({request, context}: LoaderFunctionArgs) {
 export default function AllProducts() {
   const {products} = useLoaderData<typeof loader>();
 
-  const filteredProducts = products.nodes.filter(
-    (node: any) => node.metafield && node.metafield.value === 'cch',
-  );
-
   return (
     <div className="collection">
       <h1>All Products</h1>
-      <Pagination connection={{...products, nodes: filteredProducts}}>
+      <Pagination connection={products}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <>
             <PreviousLink>
@@ -121,9 +116,6 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
     id
     handle
     title
-    metafield(namespace: "ptosf", key: "storefront") {
-        value
-      }
     featuredImage {
       id
       altText
@@ -165,7 +157,6 @@ const ALL_PRODUCTS_QUERY = `#graphql
       last: $last
       before: $startCursor
       after: $endCursor
-      query: "metafield:ptosf.storefront:cch"
     ) {
       nodes {
         ...ProductItem

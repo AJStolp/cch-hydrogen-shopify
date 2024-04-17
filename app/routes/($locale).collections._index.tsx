@@ -35,7 +35,7 @@ export default function Collections() {
 
   return (
     <div className="collections">
-      <h1 className="text-2xl">Collections</h1>
+      <h1 className="text-2xl">Cafe Collections</h1>
       <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <div>

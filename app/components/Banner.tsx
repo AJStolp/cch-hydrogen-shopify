@@ -34,7 +34,7 @@ export default function Banner({code}: BannerProps) {
             <span className="sr-only">Mega Phone</span>
           </span>
           <span className="text-black">
-            Use code: <span className="text-text"> {`${code}`}</span> for 10%
+            Use code: <span className="text-text"> {`${code}`}</span> for 12%
             off + Enjoy Free Shipping on All Our Unique Coffee Mugs!{' '}
             <a href={`/collections/all`} className="text-accent shop-now-btn">
               Shop Now!

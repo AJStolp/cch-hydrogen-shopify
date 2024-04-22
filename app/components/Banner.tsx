@@ -35,7 +35,7 @@ export default function Banner({code}: BannerProps) {
           </span>
           <span className="text-black">
             Use code: <span className="text-text"> {`${code}`}</span> for 12%
-            off + Enjoy Free Shipping on All Our Unique Coffee Mugs!{' '}
+            off + Enjoy free shipping on all of our unique home decor!{' '}
             <a href={`/collections/all`} className="text-accent shop-now-btn">
               Shop Now!
             </a>

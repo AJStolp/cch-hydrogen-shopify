@@ -96,13 +96,11 @@ function FeaturedCollection({
   collection: FeaturedCollectionFragment;
 }) {
   if (!collection) return null;
-  const image = collection?.image;
-  const filteredCollection = collection.metafield?.value == 'cch' ? image : '';
 
   return (
     <section className="py-12">
       <div className="mx-auto rounded h-full flex flex-col lg:flex-row">
-        {filteredCollection && (
+        {collection.image && (
           <div className="featured-collection-image lg:w-full">
             <Link
               className="featured-collection lg:block lg:h-full"
@@ -119,7 +117,7 @@ function FeaturedCollection({
               </svg>
               <Image
                 className="object-cover w-full h-56 rounded h-full"
-                data={filteredCollection}
+                data={collection.image}
                 sizes="100%"
                 alt=""
                 aria-hidden="true"
@@ -207,13 +205,33 @@ function RecommendedProducts({
   );
 }
 
+// const FEATURED_COLLECTION_QUERY = `#graphql
+//   fragment FeaturedCollection on Collection {
+//     id
+//     title
+//     image {
+//       id
+//       url
+//       altText
+//       width
+//       height
+//     }
+//     handle
+//   }
+//   query FeaturedCollection($country: CountryCode, $language: LanguageCode)
+//     @inContext(country: $country, language: $language) {
+//     collections(first: 1) {
+//       nodes {
+//         ...FeaturedCollection
+//       }
+//     }
+//   }
+// ` as const;
+
 const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
     id
     title
-    metafield(namespace: "tosf", key: "storefront") {
-      value
-    }
     image {
       id
       url
@@ -225,7 +243,7 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   }
   query FeaturedCollection($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    collections(first: 1,  query: "metafield:tosf:storefront:cch") {
+    collections(first: 1, query: "Candles") {
       nodes {
         ...FeaturedCollection
       }

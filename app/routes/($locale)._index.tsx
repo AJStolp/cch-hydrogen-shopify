@@ -96,13 +96,11 @@ function FeaturedCollection({
   collection: FeaturedCollectionFragment;
 }) {
   if (!collection) return null;
-  const image = collection?.image;
-  const filteredCollection = collection.metafield?.value == 'cch' ? image : '';
 
   return (
     <section className="py-12">
       <div className="mx-auto rounded h-full flex flex-col lg:flex-row">
-        {filteredCollection && (
+        {collection.image && (
           <div className="featured-collection-image lg:w-full">
             <Link
               className="featured-collection lg:block lg:h-full"
@@ -119,7 +117,7 @@ function FeaturedCollection({
               </svg>
               <Image
                 className="object-cover w-full h-56 rounded h-full"
-                data={filteredCollection}
+                data={collection.image}
                 sizes="100%"
                 alt=""
                 aria-hidden="true"
@@ -130,22 +128,22 @@ function FeaturedCollection({
         <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl lg:py-10">
           <div className="lg:mb-32 mt-4 lg:mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-4xl">
-              Signature Sips: {collection.title}
+              {collection.title} Collection
             </h2>
             <p className="py-2">
-              Our Signature Sips collection isn't just about cups; it's a
-              playground of creativity, flavor, and charm waiting for you to
-              explore. Whether you prefer a cup that whispers classic charm or
-              one that screams bold personality, we've got the perfect match for
-              your daily brew. So, grab your favorite mug and let's embark on a
-              journey to find your new coffee companion!
+              Embrace the coastal lifestyle with Coffee Cup Hut's exclusive{' '}
+              {collection.title} collection. From the serene flicker of our
+              candles to the cozy warmth of our blankets, each item brings the
+              relaxed charm of the beach to your home. So, whether you're
+              lounging by the shore or creating your own beach retreat, let our
+              curated selection of products enhance your coastal experience.
             </p>
             <div className="flex items-center pt-4">
               <a
                 href={`/collections/${collection.handle}`}
                 className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
               >
-                Shop Signature Sips
+                Shop {collection.title}
               </a>
             </div>
           </div>
@@ -211,9 +209,6 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
     id
     title
-    metafield(namespace: "tosf", key: "storefront") {
-      value
-    }
     image {
       id
       url
@@ -225,7 +220,7 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   }
   query FeaturedCollection($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    collections(first: 1,  query: "metafield:tosf:storefront:cch") {
+    collections(first: 1, query: "Candles") {
       nodes {
         ...FeaturedCollection
       }

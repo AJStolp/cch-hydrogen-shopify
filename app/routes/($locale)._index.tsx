@@ -164,12 +164,9 @@ function RecommendedProducts({
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => {
-            const filteredProducts = products.nodes.filter(
-              (product) => product.metafield?.value === 'cch', // Adjust filter logic
-            );
             return (
-              <div className="recommended-products-grid">
-                {filteredProducts.map((product) => (
+              <div className="recommended-products-grid rounded">
+                {products.nodes.map((product) => (
                   <section key={product.id}>
                     <Link
                       className="recommended-product rounded-lg"
@@ -232,9 +229,6 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   fragment RecommendedProduct on Product {
     id
     title
-    metafield(namespace: "ptosf", key: "storefront") {
-      value
-    }
     handle
     variants(first: 1) {
       nodes {
@@ -259,7 +253,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   }
   query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    products(first: 4, sortKey: BEST_SELLING, query: "metafield:storefront:cch") {
+    products(first: 4, sortKey: BEST_SELLING, query: "Coffee") {
       nodes {
         ...RecommendedProduct
       }

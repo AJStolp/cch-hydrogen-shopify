@@ -19,13 +19,13 @@ export default function HeroSlanted() {
       <div className="relative flex flex-col items-start w-full max-w-xl md:px-0 lg:max-w-screen-xl lg:py-10">
         <div className="lg:mb-32 mt-6 lg:mt-12 md:max-w-[30rem] lg:pr-5 xl:max-w-[40rem]">
           <h1 className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:text-6xl">
-            Find Your Perfect Coffee Companion
+            Discover More Than Just Mugs: Elevate Your Everyday Ritual
           </h1>
           <p>
-            Dive into our exclusive selection of coffee cups, each crafted to
-            perfect your daily coffee ritual. Whether you're seeking
-            sophistication or practical innovation, your next favorite coffee
-            companion awaits.
+            At Coffee Cup Hut, we're more than just mugs; we're curators of cozy
+            moments and unforgettable experiences. From the warmth of our
+            candles to the embrace of our blankets, every item in our collection
+            is designed to enhance your daily indulgence.
           </p>
           <div className="flex items-center pt-4">
             <a

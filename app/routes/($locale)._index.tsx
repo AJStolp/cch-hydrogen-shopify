@@ -13,6 +13,7 @@ import type {
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
 import HeroSlanted from '~/components/hero-slanted';
+import Hero from '~/components/Hero';
 
 export const meta: MetaFunction = () => {
   return [
@@ -39,7 +40,6 @@ export default function Homepage() {
   return (
     <div className="home">
       <HeroSlanted />
-      {/* <Hero /> */}
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>

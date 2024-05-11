@@ -34,12 +34,19 @@ export default function Banner({code}: BannerProps) {
             <span className="sr-only">Mega Phone</span>
           </span>
           <span className="text-black">
+            Check out our new line of Coffee + Enjoy free shipping on all of our
+            unique home decor!{' '}
+            <a href={`/collections/all`} className="text-accent shop-now-btn">
+              Shop Now!
+            </a>
+          </span>
+          {/* <span className="text-black">
             Use code: <span className="text-text"> {`${code}`}</span> for 12%
             off + Enjoy free shipping on all of our unique home decor!{' '}
             <a href={`/collections/all`} className="text-accent shop-now-btn">
               Shop Now!
             </a>
-          </span>
+          </span> */}
         </p>
       </div>
       <div className="flex items-center">

@@ -120,7 +120,6 @@ const COLLECTIONS_QUERY = `#graphql
       last: $last,
       before: $startCursor,
       after: $endCursor,
-      query: "metafield:tosf:storefront:cch"
     ) {
       nodes {
         ...Collection

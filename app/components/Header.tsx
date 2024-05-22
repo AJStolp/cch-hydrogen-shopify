@@ -38,6 +38,9 @@ export function HeaderMenu({
   const className = `header-menu-${viewport}`;
 
   const [activeDropDownId, setActiveDropDownId] = useState<string | null>(null);
+  const [activeSubDropDownId, setActiveSubDropDownId] = useState<string | null>(
+    null,
+  );
 
   const toggleDropdown =
     (itemId: string) =>
@@ -46,73 +49,122 @@ export function HeaderMenu({
         | React.MouseEvent<HTMLAnchorElement>
         | React.TouchEvent<HTMLAnchorElement>,
     ) => {
-      event.preventDefault(); // Prevent default link behavior
-      setActiveDropDownId((prevId) => (prevId === itemId ? null : itemId)); // Toggle visibility
+      event.preventDefault();
+      setActiveDropDownId((prevId) => (prevId === itemId ? null : itemId));
     };
+
+  const toggleSubDropdown =
+    (subItemId: string) =>
+    (
+      event:
+        | React.MouseEvent<HTMLAnchorElement>
+        | React.TouchEvent<HTMLAnchorElement>,
+    ) => {
+      event.preventDefault();
+      setActiveSubDropDownId((prevId) =>
+        prevId === subItemId ? null : subItemId,
+      );
+    };
+
+  const MenuItem = ({item}: {item: any}) => {
+    if (!item.url) return null;
+
+    const url =
+      item.url.includes('myshopify.com') ||
+      item.url.includes(publicStoreDomain) ||
+      item.url.includes(primaryDomainUrl)
+        ? new URL(item.url).pathname
+        : item.url;
+
+    return (
+      <>
+        <NavLink
+          end
+          prefetch="intent"
+          to={url}
+          onClick={
+            item.items && item.items.length
+              ? toggleDropdown(item.id)
+              : undefined
+          }
+          className={
+            item.items && item.items.length ? 'flex flex-row items-center' : ''
+          }
+          key={item.id}
+        >
+          {item.title}
+          {item.items && item.items.length ? (
+            <span className="ml-2">
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 320 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M310.6 246.6l-127.1 128C176.4 380.9 168.2 384 160 384s-16.38-3.125-22.63-9.375l-127.1-128C.2244 237.5-2.516 223.7 2.438 211.8S19.07 192 32 192h255.1c12.94 0 24.62 7.781 29.58 19.75S319.8 237.5 310.6 246.6z" />
+              </svg>
+            </span>
+          ) : null}
+        </NavLink>
+        {item.items && (
+          <div
+            className={`${
+              activeDropDownId === item.id
+                ? 'flex flex-col w-fit md:absolute border-text border-2 text-text bg-sAccent rounded py-2 px-4 top-[42px]'
+                : 'hidden'
+            }`}
+          >
+            {item.items.map((subItem: any) => (
+              <div key={subItem.id} className="menu-subitem">
+                <NavLink
+                  end
+                  prefetch="intent"
+                  to={subItem.url ? new URL(subItem.url).pathname : '#'}
+                  onClick={
+                    subItem.items && subItem.items.length
+                      ? toggleSubDropdown(subItem.id)
+                      : undefined
+                  }
+                  className={
+                    subItem.items && subItem.items.length
+                      ? 'flex flex-row items-center'
+                      : ''
+                  }
+                >
+                  {subItem.title}
+                  {subItem.items && subItem.items.length ? (
+                    <span className="ml-2">
+                      <svg
+                        className="h-5 w-5"
+                        viewBox="0 0 320 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M310.6 246.6l-127.1 128C176.4 380.9 168.2 384 160 384s-16.38-3.125-22.63-9.375l-127.1-128C.2244 237.5-2.516 223.7 2.438 211.8S19.07 192 32 192h255.1c12.94 0 24.62 7.781 29.58 19.75S319.8 237.5 310.6 246.6z" />
+                      </svg>
+                    </span>
+                  ) : null}
+                </NavLink>
+                {subItem.items && activeSubDropDownId === subItem.id && (
+                  <ul>
+                    {subItem.items.map((nestedItem: any) => (
+                      <li className="mb-0 ml-4">
+                        <MenuItem key={nestedItem.id} item={nestedItem} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    );
+  };
 
   return (
     <nav className={className} role="navigation">
-      {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
-        if (!item.url) return null;
-
-        const url =
-          item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain) ||
-          item.url.includes(primaryDomainUrl)
-            ? new URL(item.url).pathname
-            : item.url;
-
-        return (
-          <div key={item.id}>
-            <NavLink
-              end
-              prefetch="intent"
-              style={activeLinkStyle}
-              to={url}
-              onClick={item.items?.length ? toggleDropdown(item.id) : undefined}
-              className={item.items.length ? 'flex flex-row' : ''}
-            >
-              {item.title}
-              <span>
-                {item.items?.length ? (
-                  <svg
-                    className="h-5 w-5"
-                    viewBox="0 0 320 512"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M310.6 246.6l-127.1 128C176.4 380.9 168.2 384 160 384s-16.38-3.125-22.63-9.375l-127.1-128C.2244 237.5-2.516 223.7 2.438 211.8S19.07 192 32 192h255.1c12.94 0 24.62 7.781 29.58 19.75S319.8 237.5 310.6 246.6z" />
-                  </svg>
-                ) : (
-                  ''
-                )}
-              </span>
-            </NavLink>
-            {item.items && (
-              <div
-                className={`${
-                  activeDropDownId === item.id
-                    ? '!flex flex-col w-fit md:absolute border-text border-2 text-text bg-sAccent rounded py-2 px-4'
-                    : 'hidden'
-                }`}
-              >
-                {item.items.map((subItem) => {
-                  // Only proceed if subItem.url is truthy
-                  if (subItem.url) {
-                    const urlObj = new URL(subItem.url);
-                    const relativePath = urlObj.pathname;
-
-                    return (
-                      <a href={relativePath} key={subItem.id}>
-                        {subItem.title}
-                      </a>
-                    );
-                  }
-                })}
-              </div>
-            )}
-          </div>
-        );
-      })}
+      {(menu || FALLBACK_HEADER_MENU).items.map((item) => (
+        <MenuItem key={item.id} item={item} />
+      ))}
     </nav>
   );
 }
@@ -145,11 +197,11 @@ function SearchToggle() {
   return <a href="#search-aside">Search</a>;
 }
 
-function CartBadge({count}: {count: number}) {
+function CartBadge({count}: Readonly<{count: number}>) {
   return <a href="#cart-aside">Cart {count}</a>;
 }
 
-function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {
+function CartToggle({cart}: Readonly<Pick<HeaderProps, 'cart'>>) {
   return (
     <Suspense fallback={<CartBadge count={0} />}>
       <Await resolve={cart}>

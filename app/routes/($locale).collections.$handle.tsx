@@ -82,10 +82,10 @@ function ProductsGrid({products}: {products: ProductItemFragment[]}) {
 function ProductItem({
   product,
   loading,
-}: {
+}: Readonly<{
   product: ProductItemFragment;
   loading?: 'eager' | 'lazy';
-}) {
+}>) {
   const variant = product.variants.nodes[0];
   const variantUrl = useVariantUrl(product.handle, variant.selectedOptions);
   return (
@@ -94,11 +94,12 @@ function ProductItem({
       key={product.id}
       prefetch="intent"
       to={variantUrl}
-      aria-label={product.title}
+      // aria-label={product.title}
     >
       {product.featuredImage && (
         <Image
-          alt={product.featuredImage.altText || product.title}
+          // alt={product.featuredImage.altText || product.title}
+          alt=""
           aspectRatio="1/1"
           data={product.featuredImage}
           loading={loading}
@@ -146,7 +147,7 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
       }
     }
   }
-` as const;
+`;
 
 // NOTE: https://shopify.dev/docs/api/storefront/2022-04/objects/collection
 const COLLECTION_QUERY = `#graphql

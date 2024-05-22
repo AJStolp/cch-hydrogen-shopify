@@ -19,7 +19,7 @@ export async function loader({request, context}: LoaderFunctionArgs) {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.search);
   const variables = getPaginationVariables(request, {pageBy: 8});
-  const searchTerm = String(searchParams.get('q') || '');
+  const searchTerm = String(searchParams.get('q') ?? '');
 
   if (!searchTerm) {
     return {
@@ -172,4 +172,4 @@ const SEARCH_QUERY = `#graphql
       }
     }
   }
-` as const;
+`;

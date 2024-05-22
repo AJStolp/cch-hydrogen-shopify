@@ -13,7 +13,6 @@ import type {
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
 import HeroSlanted from '~/components/hero-slanted';
-import Hero from '~/components/Hero';
 
 export const meta: MetaFunction = () => {
   return [
@@ -179,15 +178,15 @@ function RecommendedProducts({
                         alt={`product name: ${product.title}`}
                       />
                     </Link>
-                    <section className="bg-sAccent text-text rounded p-2 flex flex-col lg:flex-row lg:justify-between min-h-[100px] align-center">
-                      <div className="pb-2 lg:w-3/6">
+                    <section className="bg-sAccent text-text rounded p-2 flex flex-col lg:flex-row lg:justify-between items-stretch md:h-[150px] lg:h-[100px]">
+                      <div className="pb-2 lg:w-3/6 h-full flex flex-col justify-center">
                         <h3 className="text">{product.title}</h3>
-                        <small className="text-sm">
-                          <Money data={product.priceRange.minVariantPrice} />
-                        </small>
+                        <Money
+                          className="font-bold"
+                          data={product.priceRange.minVariantPrice}
+                        />
                       </div>
-                      <div className="lg:w-3/6 lg:text-end lg:self-center">
-                        {' '}
+                      <div className="lg:w-3/6 lg:text-end h-full flex items-center justify-end">
                         <AddToCartButton
                           variantId={product.variants.nodes[0].id}
                         >

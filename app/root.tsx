@@ -221,20 +221,35 @@ const MENU_FRAGMENT = `#graphql
     title
     type
     url
-  }
-  fragment ChildMenuItem on MenuItem {
-    ...MenuItem
-  }
-  fragment ParentMenuItem on MenuItem {
-    ...MenuItem
     items {
-      ...ChildMenuItem
+      id
+      resourceId
+      tags
+      title
+      type
+      url
+      items {
+        id
+        resourceId
+        tags
+        title
+        type
+        url
+        items {
+          id
+          resourceId
+          tags
+          title
+          type
+          url
+        }
+      }
     }
   }
   fragment Menu on Menu {
     id
     items {
-      ...ParentMenuItem
+      ...MenuItem
     }
   }
 ` as const;

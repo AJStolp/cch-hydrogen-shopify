@@ -77,4 +77,4 @@ const PAGE_QUERY = `#graphql
       }
     }
   }
-` as const;
+`;

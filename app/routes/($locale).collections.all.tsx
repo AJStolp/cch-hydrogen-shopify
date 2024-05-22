@@ -57,7 +57,7 @@ export default function AllProducts() {
   );
 }
 
-function ProductsGrid({products}: {products: ProductItemFragment[]}) {
+function ProductsGrid({products}: Readonly<{products: ProductItemFragment[]}>) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {products.map((product, index) => {
@@ -76,10 +76,10 @@ function ProductsGrid({products}: {products: ProductItemFragment[]}) {
 function ProductItem({
   product,
   loading,
-}: {
+}: Readonly<{
   product: ProductItemFragment;
   loading?: 'eager' | 'lazy';
-}) {
+}>) {
   const variant = product.variants.nodes[0];
   const variantUrl = useVariantUrl(product.handle, variant.selectedOptions);
   return (
@@ -88,11 +88,12 @@ function ProductItem({
       key={product.id}
       prefetch="intent"
       to={variantUrl}
-      aria-label={product.title}
+      // aria-label={product.title}
     >
       {product.featuredImage && (
         <Image
-          alt={product.featuredImage.altText || product.title}
+          alt=""
+          // alt={product.featuredImage.altText || product.title}
           aspectRatio="1/1"
           data={product.featuredImage}
           loading={loading}
@@ -140,7 +141,7 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
       }
     }
   }
-` as const;
+`;
 
 const ALL_PRODUCTS_QUERY = `#graphql
   ${PRODUCT_ITEM_FRAGMENT}

@@ -168,7 +168,7 @@ function ProductImages({images}) {
         {/* Navigation buttons */}
         <button
           onClick={() => scroll('left')}
-          className="absolute z-10 left-0 top-1/2 transform -translate-y-1/2 text-white text-4xl font-bold hover:underline"
+          className="absolute z-10 left-0 top-1/2 transform -translate-y-1/2 text-black text-4xl font-bold hover:underline"
         >
           &larr;
         </button>
@@ -191,7 +191,7 @@ function ProductImages({images}) {
         </ul>
         <button
           onClick={() => scroll('right')}
-          className="absolute z-10 right-0 top-1/2 transform -translate-y-1/2 text-white text-4xl font-bold hover:underline rounded"
+          className="absolute z-10 right-0 top-1/2 transform -translate-y-1/2 text-black text-4xl font-bold hover:underline rounded"
         >
           &rarr;
         </button>

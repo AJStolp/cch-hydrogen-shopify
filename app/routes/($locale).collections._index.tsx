@@ -53,7 +53,9 @@ export default function Collections() {
   );
 }
 
-function CollectionsGrid({collections}: {collections: CollectionFragment[]}) {
+function CollectionsGrid({
+  collections,
+}: Readonly<{collections: CollectionFragment[]}>) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {collections.map((collection, index) => (
@@ -70,10 +72,10 @@ function CollectionsGrid({collections}: {collections: CollectionFragment[]}) {
 function CollectionItem({
   collection,
   index,
-}: {
+}: Readonly<{
   collection: CollectionFragment;
   index: number;
-}) {
+}>) {
   return (
     <Link
       className="collection-item"
@@ -83,13 +85,13 @@ function CollectionItem({
     >
       {collection?.image && (
         <Image
-          alt={collection.image.altText || collection.title}
+          alt={collection.image.altText ?? collection.title}
           aspectRatio="1/1"
           data={collection.image}
           loading={index < 3 ? 'eager' : undefined}
         />
       )}
-      <h5>{collection.title}</h5>
+      <h2>{collection.title}</h2>
     </Link>
   );
 }
@@ -132,4 +134,4 @@ const COLLECTIONS_QUERY = `#graphql
       }
     }
   }
-` as const;
+`;

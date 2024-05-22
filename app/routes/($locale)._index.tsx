@@ -179,16 +179,21 @@ function RecommendedProducts({
                         alt={`product name: ${product.title}`}
                       />
                     </Link>
-                    <section className="bg-sAccent text-text rounded p-2 flex flex-col lg:flex-row lg:justify-between">
-                      <div className="pb-2">
+                    <section className="bg-sAccent text-text rounded p-2 flex flex-col lg:flex-row lg:justify-between min-h-[100px] align-center">
+                      <div className="pb-2 lg:w-3/6">
                         <h3 className="text">{product.title}</h3>
                         <small className="text-sm">
                           <Money data={product.priceRange.minVariantPrice} />
                         </small>
                       </div>
-                      <AddToCartButton variantId={product.variants.nodes[0].id}>
-                        Add to Cart
-                      </AddToCartButton>
+                      <div className="lg:w-3/6 lg:text-end lg:self-center">
+                        {' '}
+                        <AddToCartButton
+                          variantId={product.variants.nodes[0].id}
+                        >
+                          Add to Cart
+                        </AddToCartButton>
+                      </div>
                     </section>
                   </section>
                 ))}

@@ -542,3 +542,13 @@ aside li {
   padding-left: 25px;
   list-style: unset;
 }
+
+.cch-underline {
+  text-decoration: underline;
+}
+.cch-underline:hover {
+  color: #eb6d20 !important;
+  transform: scale(1.15);
+  display: inline-block;
+  margin: 0 4px;
+}

@@ -94,7 +94,7 @@ export function HeaderMenu({
         >
           {item.title}
           {item.items && item.items.length ? (
-            <span className="ml-2">
+            <span>
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 320 512"
@@ -132,7 +132,7 @@ export function HeaderMenu({
                 >
                   {subItem.title}
                   {subItem.items && subItem.items.length ? (
-                    <span className="ml-2">
+                    <span>
                       <svg
                         className="h-5 w-5"
                         viewBox="0 0 320 512"
